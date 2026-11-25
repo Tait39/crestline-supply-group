@@ -49,3 +49,29 @@
 @media(prefers-reduced-motion:reduce){.industry-card:nth-child(n){animation:none!important}.industry-card,.value-item,.category-card{transition:none!important}.industry-card:hover{transform:none}}
 @media(max-width:900px){.approach-detail-grid{grid-template-columns:1fr 1fr}.approach-detail:last-child{grid-column:1/-1}.industry-grid .industry-card{padding:23px 14px}.industry-grid .industry-card:first-child{padding-left:14px}}
 @media(max-width:640px){.approach-details{padding:68px 0}.approach-heading{display:block}.approach-heading h2{font-size:38px}.approach-heading>p{margin-top:17px}.approach-detail-grid{grid-template-columns:1fr}.approach-detail:last-child{grid-column:auto}.approach-detail{padding:24px 20px}.industry-grid .industry-card{min-height:180px;padding:19px 12px!important}.industry-grid .industry-card b{font-size:11px}.industry-grid .industry-card span{font-size:9px}.industry-grid .industry-card small{font-size:8px}.sector-detail-grid{grid-template-columns:1fr;gap:13px;margin-top:22px}.sector-detail{padding:24px 20px;min-height:0}}
+
+
+/* Clickable supply-category navigation */
+.sector-tags{align-items:center}
+.sector-tag{appearance:none;border:1px solid #d8e8f7;background:#eaf4ff;color:#145b91;padding:8px 10px;display:inline-flex;align-items:center;gap:7px;font:700 9px 'Manrope',sans-serif;cursor:pointer;border-radius:3px;transition:background .2s,border-color .2s,color .2s,transform .2s,box-shadow .2s;animation:sectorTagFloat 5.4s ease-in-out infinite}
+.sector-tag:nth-child(2n){animation-delay:-2.7s}
+.sector-tag:nth-child(3n){animation-delay:-1.3s}
+.sector-tag svg{color:#2879b7;transition:transform .2s}
+.sector-tag:hover{background:#d9edff;border-color:#8bbce5;color:#0d4777;transform:translateY(-3px);box-shadow:0 7px 16px #145b9117}
+.sector-tag:hover svg{transform:translate(2px,-2px)}
+.sector-tag:focus-visible{outline:2px solid #2879b7;outline-offset:3px}
+@keyframes sectorTagFloat{0%,100%{translate:0 0}50%{translate:0 -3px}}
+.selected-supply-panel{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;margin:0 0 25px;padding:27px 30px;background:#fff;border:1px solid #cfe2f3;border-left:4px solid #2879b7;box-shadow:0 12px 30px #142b400b;scroll-margin-top:100px}
+.selected-supply-copy .detail-number{margin-bottom:10px;color:#2879b7}
+.selected-supply-copy h3{font:700 25px 'Manrope';letter-spacing:-.03em;color:#20384b;margin:0 0 8px}
+.selected-supply-copy>p{font-size:11px;line-height:1.8;color:#667782;margin:0 0 14px;max-width:690px}
+.selected-supply-items{display:flex;flex-wrap:wrap;gap:9px 18px;margin-bottom:13px}
+.selected-supply-items span{display:inline-flex;align-items:center;gap:6px;font-size:10px;color:#35566e}
+.selected-supply-items svg{color:#2879b7;flex-shrink:0}
+.selected-supply-copy>small{display:block;font-size:9px;line-height:1.6;color:#89959d}
+.selected-supply-actions{display:flex;flex-direction:column;align-items:stretch;gap:12px;min-width:180px}
+.selected-supply-actions .button{justify-content:center;white-space:nowrap}
+.selected-supply-close{border:0;background:transparent;color:#647583;font-size:10px;font-weight:700;cursor:pointer;padding:7px}
+.selected-supply-close:hover{color:#145b91}
+@media(prefers-reduced-motion:reduce){.sector-tag{animation:none!important;transition:none!important}.sector-tag:hover{transform:none}}
+@media(max-width:640px){.selected-supply-panel{grid-template-columns:1fr;gap:17px;padding:22px 18px}.selected-supply-copy h3{font-size:22px}.selected-supply-actions{min-width:0}.sector-tag{font-size:9px;padding:8px 9px}}
