@@ -75,3 +75,18 @@
 .selected-supply-close:hover{color:#145b91}
 @media(prefers-reduced-motion:reduce){.sector-tag{animation:none!important;transition:none!important}.sector-tag:hover{transform:none}}
 @media(max-width:640px){.selected-supply-panel{grid-template-columns:1fr;gap:17px;padding:22px 18px}.selected-supply-copy h3{font-size:22px}.selected-supply-actions{min-width:0}.sector-tag{font-size:9px;padding:8px 9px}}
+
+
+/* Readability refinement: larger narrative copy and sector descriptions */
+.approach-detail p,.sector-detail p{font-size:14px;line-height:1.85;color:#586b79}
+.industry-card span{font-size:12px;line-height:1.8;color:#687984}
+.section-aside p,.catalog-top>p,.industries-head p,.procurement-panel>p,.process-intro,.quote-copy>p{font-size:14px;line-height:1.85}
+.category-info p{font-size:12px;line-height:1.8}
+.approach-detail ul{font-size:12px;line-height:1.9}
+@media(max-width:640px){
+ .approach-detail p,.sector-detail p{font-size:13px;line-height:1.85}
+ .industry-card span{font-size:11px;line-height:1.8}
+ .section-aside p,.catalog-top>p,.industries-head p,.procurement-panel>p,.process-intro,.quote-copy>p{font-size:13px;line-height:1.85}
+ .category-info p{font-size:12px;line-height:1.8}
+ .approach-detail ul{font-size:12px}
+}
