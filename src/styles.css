@@ -90,3 +90,36 @@
  .category-info p{font-size:12px;line-height:1.8}
  .approach-detail ul{font-size:12px}
 }
+
+
+/* Early-stage supplier network and careers sections */
+.supplier-section{padding:100px 0;background:#f6f7f6}
+.supplier-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:75px;align-items:start}
+.supplier-intro h2,.careers-layout h2{font:700 48px/1.08 'Manrope';letter-spacing:-.05em;margin:20px 0;color:#20384b}
+.supplier-intro h2 em,.careers-layout h2 em{font-style:normal;color:#bd9b65}
+.supplier-intro>p,.careers-layout>div:first-child>p{font-size:14px;line-height:1.9;color:#687984;max-width:470px}
+.supplier-points{display:grid;gap:13px;margin:28px 0}
+.supplier-points span{display:flex;align-items:center;gap:10px;color:#355064;font-size:12px}
+.supplier-points svg{color:#a98750;flex-shrink:0}
+.supplier-intro .supplier-note{font-size:10px;line-height:1.7;color:#89949b;border-top:1px solid #e0e5e7;padding-top:18px}
+.supplier-form-card,.careers-card{background:#fff;border:1px solid #e3e8e9;padding:30px;box-shadow:0 14px 45px #172e400b}
+.supplier-form-card .form-grid{margin-top:20px}
+.supplier-form-card .form-grid label,.careers-card label{font-size:10px;font-weight:700;color:#455663;display:flex;flex-direction:column;gap:8px}
+.supplier-form-card .form-grid input,.supplier-form-card .form-grid select,.supplier-form-card .form-grid textarea,.careers-card input,.careers-card select,.careers-card textarea{width:100%;border:1px solid #dfe4e6;background:#fff;padding:12px 13px;outline:0;font:11px 'DM Sans';color:#283c4c;border-radius:0}
+.supplier-form-card .form-grid input:focus,.supplier-form-card .form-grid select:focus,.supplier-form-card .form-grid textarea:focus,.careers-card input:focus,.careers-card select:focus,.careers-card textarea:focus{border-color:#b99a68;box-shadow:0 0 0 2px #c8a66c20}
+.supplier-form-card .form-privacy{font-size:9px;line-height:1.7;color:#89949b}
+.careers-section{padding:100px 0;background:#142b40;color:#fff}
+.careers-layout{display:grid;grid-template-columns:1fr .9fr;gap:80px;align-items:start}
+.careers-layout h2{color:#fff}
+.careers-layout>div:first-child>p{color:#c4d0d9}
+.careers-roles{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
+.careers-roles span{border:1px solid #425669;padding:13px 14px;color:#e1e8ed;font-size:11px;line-height:1.5}
+.careers-card{color:#263d50}
+.careers-card>svg{color:#a98750;margin-bottom:13px}
+.careers-card h3{font:700 23px 'Manrope';margin:0 0 9px}
+.careers-card>p{font-size:11px;line-height:1.8;color:#75818a;margin:0 0 20px}
+.careers-card form{display:grid;gap:13px}
+.careers-card .submit-button{margin-top:3px}
+.careers-card>form>small{font-size:9px;line-height:1.7;color:#89949b}
+@media(max-width:900px){.supplier-layout,.careers-layout{grid-template-columns:1fr;gap:38px}.supplier-intro h2,.careers-layout h2{font-size:43px}}
+@media(max-width:640px){.supplier-section,.careers-section{padding:70px 0}.supplier-intro h2,.careers-layout h2{font-size:38px}.supplier-form-card,.careers-card{padding:21px 17px}.careers-roles{grid-template-columns:1fr 1fr;gap:9px}.careers-roles span{font-size:10px;padding:11px 9px}}
