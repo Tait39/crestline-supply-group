@@ -267,6 +267,20 @@ begin
   end loop;
 end $$;
 
+-- Security-definer helper avoids recursive RLS lookups on profiles.
+create or replace function public.is_active_staff()
+returns boolean
+language sql
+stable
+security definer
+set search_path = public
+as $
+  select exists (
+    select 1 from public.profiles
+    where id = auth.uid() and is_active = true
+  );
+$;
+
 -- Enable RLS everywhere. No anonymous access to internal records.
 alter table public.profiles enable row level security;
 alter table public.business_settings enable row level security;
@@ -287,9 +301,9 @@ alter table public.activity_log enable row level security;
 -- authenticated users with an active profile; role-specific permissions will be
 -- tightened when the admin portal and approval workflows are implemented.
 create policy "staff read profiles" on public.profiles for select to authenticated
-using (exists (select 1 from public.profiles p where p.id = auth.uid() and p.is_active));
+using (public.is_active_staff());
 create policy "staff read business settings" on public.business_settings for select to authenticated
-using (exists (select 1 from public.profiles p where p.id = auth.uid() and p.is_active));
+using (public.is_active_staff());
 create policy "staff manage business settings" on public.business_settings for all to authenticated
 using (exists (select 1 from public.profiles p where p.id = auth.uid() and p.is_active and p.role in ('owner','admin')))
 with check (exists (select 1 from public.profiles p where p.id = auth.uid() and p.is_active and p.role in ('owner','admin')));
@@ -299,9 +313,9 @@ do $$
 declare t text;
 begin
   foreach t in array array['product_categories','products','suppliers','supplier_products','customers','quotes','quote_items','purchase_orders','purchase_order_items','tenders','business_documents','activity_log'] loop
-    execute format('create policy %I on public.%I for select to authenticated using (exists (select 1 from public.profiles p where p.id = auth.uid() and p.is_active))', 'staff_read_' || t, t);
-    execute format('create policy %I on public.%I for insert to authenticated with check (exists (select 1 from public.profiles p where p.id = auth.uid() and p.is_active))', 'staff_insert_' || t, t);
-    execute format('create policy %I on public.%I for update to authenticated using (exists (select 1 from public.profiles p where p.id = auth.uid() and p.is_active)) with check (exists (select 1 from public.profiles p where p.id = auth.uid() and p.is_active))', 'staff_update_' || t, t);
+    execute format('create policy %I on public.%I for select to authenticated using (public.is_active_staff())', 'staff_read_' || t, t);
+    execute format('create policy %I on public.%I for insert to authenticated with check (public.is_active_staff())', 'staff_insert_' || t, t);
+    execute format('create policy %I on public.%I for update to authenticated using (public.is_active_staff()) with check (public.is_active_staff())', 'staff_update_' || t, t);
     execute format('create policy %I on public.%I for delete to authenticated using (exists (select 1 from public.profiles p where p.id = auth.uid() and p.is_active and p.role in (''owner'',''admin'')))', 'admin_delete_' || t, t);
   end loop;
 end $$;
